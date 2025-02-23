@@ -1,28 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace RelativeImageSource.view
-{
-    /// <summary>
-    /// Interaction logic for ImageContainer.xaml
-    /// </summary>
-    public partial class ImageContainer : UserControl
-    {
-        public ImageContainer()
-        {
-            InitializeComponent();
-        }
-    }
+namespace RelativeImageSource.view; 
+/// <summary>
+/// Interaction logic for ImageContainer.xaml
+/// </summary>
+public partial class ImageContainer : UserControl {
+	public ImageContainer() {
+		InitializeComponent();
+		Debug.WriteLine($"Src: {missing.Source}"); //xaml source reset to null
+		missing.Source = new BitmapImage(
+			new Uri("../asset/icons/PascalNameDiceX.png", UriKind.Relative));
+		Debug.WriteLine($"Src 2: {missing.Source}"); //converted to "pack://application:,,,/asset/icons/PascalNameDiceX.png"
+		Loaded += onLoaded;
+	}
+
+	private void onLoaded(object sender, RoutedEventArgs e) {
+		Debug.WriteLine($"Src 3: {missing.Source}"); //reset again to null
+	}
 }

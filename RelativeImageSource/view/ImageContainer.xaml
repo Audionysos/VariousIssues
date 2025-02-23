@@ -6,7 +6,15 @@
              xmlns:local="clr-namespace:RelativeImageSource.view"
              mc:Ignorable="d" 
              d:DesignHeight="111.089" d:DesignWidth="180.154">
-	<Grid Width="100" Height="100"  Background="Red">
+	<Grid Height="100"  Background="Red">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
 		<Image Source="../asset/icons/dice.png" />
+		<Image Grid.Column="1" Source="/asset/icons/PascalNameDice.png" />
+		<Image x:Name="missing" Grid.Column="2"
+	   Source="/asset/icons/PascalNameDiceX.png" />
 	</Grid>
 </UserControl>
